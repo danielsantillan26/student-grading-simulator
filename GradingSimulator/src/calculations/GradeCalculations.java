@@ -88,6 +88,7 @@ public class GradeCalculations {
 		resultDouble /= grades.size();
 		resultDouble = Math.round((resultDouble*1e3)/1e1);
 		resultDouble /= 100;
+		Math.floor((resultDouble * 100) / 100);
 		result = Double.toString(resultDouble);
 
 		return result;
@@ -165,6 +166,7 @@ public class GradeCalculations {
 		}
 		resultDouble = Math.round((resultDouble*1e3)/1e1);
 		resultDouble /= 100;
+		Math.floor((resultDouble * 100) / 100);
 		result = Double.toString(resultDouble);
 
 
@@ -232,17 +234,20 @@ public class GradeCalculations {
 				}
 			}
 		}
-		
+
 		double resultDouble = 0.0;
 		double pointsEarnedTotal = 0.0;
 		double pointsAssignedTotal = 0.0;
-		
+
 		for (int i = 0; i < pointsEarned.size(); i++) {
 			pointsEarnedTotal += pointsEarned.get(i);
 			pointsAssignedTotal += pointsAssigned.get(i);
 		}
-		
+
 		resultDouble = pointsEarnedTotal/pointsAssignedTotal * 100;
+		resultDouble *= 100;
+		int x = (int)Math.round(resultDouble);
+		resultDouble = (double)x / 100;
 		result = Double.toString(resultDouble);
 
 		return result;
