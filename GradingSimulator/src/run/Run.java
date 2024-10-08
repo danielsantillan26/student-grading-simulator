@@ -21,7 +21,7 @@ public class Run {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		frame = new Frame("Student Grading Simulator", 1000, 800);
+		frame = new Frame("Student Grading Simulator", 1250, 800);
 		System.out.println(new Run());
 	}
 	

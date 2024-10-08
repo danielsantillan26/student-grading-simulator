@@ -12,27 +12,21 @@ public class GradeCalculations {
 
 	/**
 	 * calculateGrade determines one's average grade based on the String input. The method checks the input for
-	 * the level of the course (which is later used for GPA calculations) and how grades are calculated
-	 * (weighted or unweighted) to determine the method of calculation. Invalid inputs are considered.
+	 * how grades are calculated (weighted or unweighted) to determine the method of calculation. Invalid inputs 
+	 * are considered.
 	 * 
-	 * @param input			The list of individual grades with course difficulty and weights (String)
+	 * @param input			The list of individual grades (String)
+	 * @param system		The weighting system (int)
 	 * @return				The average grade (String)
 	 */
-	public static String calculateGrade(String input) {
+	public static String calculateGrade(String input, int system) {
 
-		if (!(input.substring(0, 1).equals("C") || input.substring(0, 1).equals("H") ||
-		input.substring(0, 1).equals("A"))) {
-			return "Invalid Input";
-		}
-
-		if (!(input.substring(2, 4).equals(": "))) {
-			return "Invalid Input";
-		}
-
-		if (input.substring(1, 2).equals("U")) {
-			return calculateUnweightedGrade(input.substring(4));
-		} else if (input.substring(1, 2).equals("W")) {
-			return calculateWeightedGrade(input.substring(4));
+		if (system == 1) {
+			return calculateUnweightedGrade(input);
+		} else if (system == 0) {
+			return calculateWeightedGrade(input);
+		} else if (system == 2) {
+			return calculatePointsGrade(input);
 		} else {
 			return "Invalid Input";
 		}
@@ -179,7 +173,82 @@ public class GradeCalculations {
 
 	}
 
-	
+
+	/**
+	 * calculatePointsGrade determines one's average grade using a points system. The input is the list
+	 * of individual grades, in the format of points scored over points assigned. The sums of the points earned
+	 * is divided by the sum of the points assigned to compute the grade average. Invalid input is considered.
+	 * 
+	 * @param input			The list of individual grades with points earned over points assigned (String)
+	 * @return				The average grade (String)
+	 */
+	private static String calculatePointsGrade(String input) {
+		String result = "";
+		String temp = input;
+		ArrayList<Double> pointsEarned = new ArrayList<Double>();
+		ArrayList<Double> pointsAssigned = new ArrayList<Double>();
+
+		if (!(Character.isDigit(input.charAt(0))) || input.indexOf(",") < 0) {
+			return "Invalid Input";
+		}
+
+		if (input.substring(input.length() - 1).equals(",")) {
+			temp = temp.substring(0, temp.length() - 1);
+		}
+
+		boolean keepGoing = true;
+		while (keepGoing) {
+
+			try {
+				pointsEarned.add(Double.parseDouble(temp.substring(0, temp.indexOf("/"))));
+			} catch (Exception e) {
+				return "Invalid Input";
+			}
+
+			temp = temp.substring(temp.indexOf("/") + 1);
+
+			try {
+				pointsAssigned.add(Double.parseDouble(temp.substring(0, temp.indexOf(","))));
+			} catch (Exception e) {
+				return "Invalid Input";
+			}
+
+			temp = temp.substring(temp.indexOf(",") + 2);
+
+			if (countChars(temp, '/') < 2) {
+				keepGoing = false;
+				try {
+					pointsEarned.add(Double.parseDouble(temp.substring(0, temp.indexOf("/"))));
+				} catch (Exception e) {
+					return "Invalid Input";
+				}
+
+				temp = temp.substring(temp.indexOf("/") + 1);
+
+				try {
+					pointsAssigned.add(Double.parseDouble(temp.substring(0)));
+				} catch (Exception e) {
+					return "Invalid Input";
+				}
+			}
+		}
+		
+		double resultDouble = 0.0;
+		double pointsEarnedTotal = 0.0;
+		double pointsAssignedTotal = 0.0;
+		
+		for (int i = 0; i < pointsEarned.size(); i++) {
+			pointsEarnedTotal += pointsEarned.get(i);
+			pointsAssignedTotal += pointsAssigned.get(i);
+		}
+		
+		resultDouble = pointsEarnedTotal/pointsAssignedTotal * 100;
+		result = Double.toString(resultDouble);
+
+		return result;
+	}
+
+
 	/**
 	 * countChars counts the number of characters in a String. This method is used when calculating
 	 * a weighted grade to help ensure every grade has a respective weight.
@@ -235,8 +304,8 @@ public class GradeCalculations {
 
 		return weights;
 	}
-	
-	
+
+
 	/**
 	 * convertNumberToLetter converts a number grade to a letter grade. It is assumed no invalid input
 	 * can enter this method.
@@ -270,8 +339,8 @@ public class GradeCalculations {
 
 		return result;
 	}
-	
-	
+
+
 	/**
 	 * This is the required toString method for this class. Since there are no fields, the class only returns
 	 * a small message for testing purposes.

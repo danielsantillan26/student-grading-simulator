@@ -31,31 +31,31 @@ public class MenuGraphics extends JPanel {
 		g2d.setColor(Constants.BG_PURPLE);
 		g2d.fillRect(0,  0, getWidth(),  getHeight());
 		g2d.setColor(Color.BLACK);
-		g2d.fillOval(100, 450, 600, 75);
-		g2d.setColor(Constants.BG_PURPLE);
-		g2d.fillOval(150, 450, 600, 75);
-		g2d.setColor(Color.BLACK);
 		g2d.fillOval(200, 450, 600, 75);
 		g2d.setColor(Constants.BG_PURPLE);
-		g2d.fillOval(250, 450, 600, 75);
+		g2d.fillOval(350, 450, 600, 75);
 		g2d.setColor(Color.BLACK);
 		g2d.fillOval(300, 450, 600, 75);
 		g2d.setColor(Constants.BG_PURPLE);
 		g2d.fillOval(350, 450, 600, 75);
+		g2d.setColor(Color.BLACK);
+		g2d.fillOval(400, 450, 600, 75);
+		g2d.setColor(Constants.BG_PURPLE);
+		g2d.fillOval(450, 450, 600, 75);
 		g2d.setColor(Constants.HDR_PURPLE);
 		g2d.fillRect(0, 0, getWidth(), 50);
 
 		g2d.setFont(new Font("Courier New Bold", Font.PLAIN, 80));
 		g2d.setColor(Color.BLACK);
-		g2d.drawString("STUDENT GRADING", 125, 300);
-		g2d.drawString("SIMULATOR", 125, 400);
+		g2d.drawString("STUDENT GRADING", 225, 300);
+		g2d.drawString("SIMULATOR", 225, 400);
 		
 		g2d.setFont(new Font("Courier New", Font.PLAIN, 30));
-		g2d.drawString("By Daniel Santillan", 300, 650);
+		g2d.drawString("By Daniel Santillan", 400, 650);
 		
 		g2d.setColor(Color.RED);
 		g2d.setFont(new Font("Comic Sans MS", Font.PLAIN, 70));
-		g2d.drawString("A+", 850, 200);
+		g2d.drawString("A+", 950, 200);
 		
 		
 	}

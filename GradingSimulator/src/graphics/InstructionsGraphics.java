@@ -57,23 +57,26 @@ public class InstructionsGraphics extends JPanel {
 		g2d.setFont(italic);
 		g2d.drawString("Grade Calculator", 25, 105);
 		g2d.setFont(plain);
-		g2d.drawString("- Type the class level (C for CP, H for HN, A for AP).", 30, 150);
-		g2d.drawString("- Type whether it is weighted (W) or unweighted (U).", 30, 185);
-		g2d.drawString("- Add a colon, a space, then type your grades as percents.", 35, 220);
-		g2d.drawString("- If weighted, type the weight decimal afterwards.", 30, 255);
-		g2d.drawString("- Separate everything with a comma and a space.", 30, 290);
-		g2d.drawString("- Example: HU 99.45, 84.24", 30, 325);
-		g2d.drawString("- Example: AW 94.58, 0.65, 75.00, 0.15", 30, 360);
+		g2d.drawString("- Determine the course difficulty with the buttons", 30, 150);
+		g2d.drawString("- Determine how the course is graded with the buttons.", 30, 185);
+		g2d.drawString("- Enter your grades in percent format if weighted or unweighted.", 35, 220);
+		g2d.drawString("- Add a colon, a space, to separate your grades.", 35, 255);
+		g2d.drawString("- For points, format your grade as points earned over points assigned.", 35, 290);
+		g2d.drawString("- If weighted, type the weight decimal after your grade", 30, 325);
+		g2d.drawString("- Weighted Example: 94.58, 0.65, 75.00, 0.15", 30, 360);
+		g2d.drawString("- Unweighted Example: 98.5, 94.3", 30, 395);
+		g2d.drawString("- Points Example: 95/100, 10/10, 50/55", 30, 430);
 		g2d.setFont(italic);
-		g2d.drawString("GPA Calculator", 25, 415);
+		g2d.drawString("GPA Calculator", 25, 475);
 		g2d.setFont(plain);
-		g2d.drawString("- Type your class GPAs, separated by commas.", 30, 455);
-		g2d.drawString("- Example: 4.2, 3.7, 4,0", 30, 490);
+		g2d.drawString("- Type your class GPAs, separated by commas.", 30, 515);
+		g2d.drawString("- Example: 4.2, 3.7, 4,0", 30, 550);
 		g2d.setFont(italic);
-		g2d.drawString("GPA Comparison", 25, 540);
+		g2d.drawString("GPA Comparison", 25, 600);
 		g2d.setFont(plain);
-		g2d.drawString("- Enter your GPA on the weighted 4.0 grading scale.", 25, 580);
-		g2d.drawString("- The system will tell analyze your college odds.", 25, 615);
+		g2d.drawString("- Enter your GPA on the weighted 4.0 grading scale.", 25, 640);
+		g2d.drawString("- The system will tell analyze your college odds.", 25, 675);
+		
 	}
 
 	
